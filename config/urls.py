@@ -17,9 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from pybo.views import base_views
 
+
+from django.conf import settings    # static
+from django.conf.urls.static import static  # static 이미지 추가
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('pybo/', include('pybo.urls')),
     path('common/', include('common.urls')),
+    path('security_portal/', include('security_portal.urls')), # '보안포털용
     path('', base_views.index, name='index'),   # '/' 에 해당되는 path
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

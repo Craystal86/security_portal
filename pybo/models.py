@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 
 class Question(models.Model):
+    # image = models.ImageField(upload_to='images/', blank=True, null=True, default='images/no_img.jpg')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     subject = models.CharField(max_length=200)
     content = models.TextField()
@@ -14,7 +15,6 @@ class Question(models.Model):
 
     def __str__(self):
         return self.subject
-
 
 class Answer(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -32,3 +32,10 @@ class Comment(models.Model):
     modify_date = models.DateTimeField(null=True, blank=True)
     question = models.ForeignKey(Question, null=True, blank=True, on_delete=models.CASCADE)
     answer = models.ForeignKey(Answer, null=True, blank=True, on_delete=models.CASCADE)
+
+# class Image(models.Model):
+#     title = models.CharField(max_length=30)
+#     image = models.ImageField()
+#
+#     def __str__(self):
+#         return self.title
