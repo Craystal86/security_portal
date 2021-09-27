@@ -5,6 +5,14 @@ from .models import Question
 from .forms import QuestionForm, AnswerForm
 from django.core.paginator import Paginator
 
+# 진원님 코드 추가
+def home(request):
+    """
+    pybo HOME 출력
+    """
+    return render(request, 'security_portal/home_ik.html')
+# 진원님 코드 종료
+
 def index(request):
     """
     security_portal 목록 출력
